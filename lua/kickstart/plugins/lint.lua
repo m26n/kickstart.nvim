@@ -15,6 +15,7 @@ return {
 
       lint.linters = {
         eslint_d = {
+          name = 'eslint',
           cmd = 'eslint_d',
           stdin = true,
           args = {
