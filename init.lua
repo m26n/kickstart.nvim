@@ -766,17 +766,17 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
-        json = { "prettierd" },
-        html = { "prettierd" },
-        css = { "prettierd" },
-        markdown = { "prettierd" },
-        yaml = { "prettierd" },
-      }
-    }
+        javascript = { 'prettierd' },
+        typescript = { 'prettierd' },
+        javascriptreact = { 'prettierd' },
+        typescriptreact = { 'prettierd' },
+        json = { 'prettierd' },
+        html = { 'prettierd' },
+        css = { 'prettierd' },
+        markdown = { 'prettierd' },
+        yaml = { 'prettierd' },
+      },
+    },
   },
 
   { -- Autocompletion
@@ -1016,6 +1016,8 @@ require('lazy').setup({
     },
   },
 })
+
+pcall(require, 'custom.autocmds')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
