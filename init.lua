@@ -676,7 +676,7 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         emmet_ls = {
-          filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
+          filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
         },
         tailwindcss = {
           filetypes = {
