@@ -1049,6 +1049,7 @@ require('lazy').setup({
 pcall(require, 'custom.autocmds')
 pcall(require, 'custom.settings')
 pcall(require, 'custom.keymaps')
+pcall(require, 'typescript-config')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
