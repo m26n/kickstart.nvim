@@ -1046,7 +1046,6 @@ require('lazy').setup({
   },
 })
 
-pcall(require, 'custom.autocmds')
 pcall(require, 'custom.settings')
 pcall(require, 'custom.keymaps')
 pcall(require, 'typescript-config')
