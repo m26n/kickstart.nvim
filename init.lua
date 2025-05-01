@@ -615,6 +615,10 @@ require('lazy').setup({
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_completion, event.buf) then
+            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = false })
+          end
         end,
       })
 
@@ -651,7 +655,7 @@ require('lazy').setup({
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      -- local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -675,49 +679,10 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-        emmet_ls = {
-          filetypes = { 'html', 'javascriptreact', 'typescriptreact' },
-        },
-        tailwindcss = {
-          filetypes = {
-            'html',
-            'css',
-            'scss',
-            'javascript',
-            'javascriptreact',
-            'typescript',
-            'typescriptreact',
-            'svelte',
-            'vue',
-            'templ', -- add/remove as needed
-          },
-          settings = {
-            tailwindCSS = {
-              experimental = {
-                classRegex = {
-                  -- For Tailwind class extraction from libraries like clsx, twMerge, cva
-                  'clsx\\(([^)]*)\\)',
-                  'cva\\(([^)]*)\\)',
-                  'twMerge\\(([^)]*)\\)',
-                },
-              },
-            },
-          },
-        },
-        lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              diagnostics = { disable = { 'missing-fields' } },
-            },
-          },
-        },
+        bashls = {},
+        emmet_ls = {},
+        tailwindcss = {},
+        lua_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -751,8 +716,9 @@ require('lazy').setup({
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            -- require('lspconfig')[server_name].setup(server)
+            vim.lsp.enable(server_name)
           end,
         },
       }
