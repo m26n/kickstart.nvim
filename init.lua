@@ -738,6 +738,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettier',
         'eslint',
+        'markdownlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -802,7 +803,7 @@ require('lazy').setup({
         json = { 'prettier' },
         html = { 'prettier' },
         css = { 'prettier' },
-        markdown = { 'prettierd' },
+        markdown = { 'markdownlint' },
         yaml = { 'prettier' },
       },
     },
