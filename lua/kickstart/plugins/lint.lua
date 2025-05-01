@@ -7,16 +7,16 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        javascript = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        javascriptreact = { 'eslintd' },
-        typescriptreact = { 'eslint_d' },
+        javascript = { 'eslint' },
+        typescript = { 'eslint' },
+        javascriptreact = { 'eslint' },
+        typescriptreact = { 'eslint' },
       }
 
       lint.linters = {
-        eslint_d = {
+        eslint = {
           name = 'eslint',
-          cmd = 'eslint_d',
+          cmd = 'eslint',
           stdin = true,
           args = {
             '--format',
@@ -45,7 +45,7 @@ return {
                 end_col = (d.endColumn or d.column) - 1,
                 severity = d.severity == 2 and 1 or 2, -- 1 = ERROR, 2 = WARN
                 message = ('%s [%s]'):format(d.message, d.ruleId or 'eslint'),
-                source = 'eslint_d',
+                source = 'eslint',
               })
             end
             return diagnostics
